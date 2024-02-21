@@ -16,7 +16,7 @@ const MenuCart = ({subTotal, clear, order}) => {
                     id="order" data-bs-toggle="modal" 
                     data-bs-target="#modal" 
                     onClick={() => {order()}}> Order </button>
-            <button className="generic-button" 
+            <button id="clear" className="generic-button" 
                     onClick={() => {clear()}}> Clear All </button>
           </div>
         </div> 
