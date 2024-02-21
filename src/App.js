@@ -135,7 +135,7 @@ function App() {
       return "No items in cart";
     } else {
       // console.log("Order Placed!\n".concat(retStr).slice(0,-2));
-      return "----------------\nOrder Placed!\n----------------\n".concat(retStr).slice(0,-2);
+      return "----------------\nOrder Placed!\n----------------\n".concat(retStr).slice(0,-1);
     }
   }
 
