@@ -2,6 +2,7 @@
   Style your elements by creating CSS classes here.
   Below, you can see an example of a class called "menu" that changes the color of the text to blue. Modify according to your needs.
 */
+/* background-color: #F5F5F5; */
 .container-fluid {
   background-color: #F5F5F5;
 }
@@ -62,19 +63,46 @@
     font-style:normal;
     padding-bottom: 5%;
   }
-
-  button {
-    border-radius: 12px;
-    height:50%;
-    width: 70%;
-    font-size:x-small;
-    border-color: gray;
-    border-style: solid;
-    box-shadow: 0 2px rgb(188, 185, 185);
-  }
-
   #button-pack {
     display: flex;
     justify-content: space-around;
   }
+}
+
+.cart {  
+  padding-left: 2%;
+  padding-bottom: 10%;
+  font-size: medium;
+
+  .generic-button {
+    border-radius: 12px;
+    height:65%;
+    width:40%;
+    line-height: 0em;
+    font-size:small;
+    border-color: gray;
+    border-style: solid;
+    padding: 0% 5% 0% 5%;
+  }
+
+  #close-button {
+    line-height:normal;
+    width:auto;
+
+  }
+  
+  .button-containers {
+    display: flex;
+    justify-content: flex-end; 
+    padding-right:5%;
+  }
+
+  #order {
+    margin-right:10%;
+  }
+
+  #modal {
+    white-space: pre;
+  }
+
 }

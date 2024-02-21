@@ -1,6 +1,8 @@
 import './App.css';
 import MenuItem from './components/MenuItem';
 import MenuHeader from './components/MenuHeader';
+import MenuCart from './components/MenuCart';
+import React, { useState } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // This imports bootstrap css styles. You can use bootstrap or your own classes by using the className attribute in your elements.
 
@@ -87,15 +89,77 @@ const header = {
 }
 
 function App() {
+
+  let i = menuItems.map((item) => ({...item, count:0}));
+  const [items, setItems] = useState(i);
+
+  const setItemCounts = (currId, newCount) => {
+    setItems((prevItems) => (
+      prevItems.map((item) => {
+        if (item.id === currId) {
+          return {...item, count: newCount}
+        } else {
+          return {...item}
+        }
+      })
+    ))
+  }
+
+  const clearTotal = () => {
+    setItems((prevItems) => (
+      prevItems.map((item) => {
+        if (item.count !== 0) {
+          return {...item, count:0}
+        } else {
+          return {...item}
+        }
+      })
+    ))
+  }
+
+  const getTotal = () => {
+    let total = 0.00;
+    items.forEach((item) => {total += (item.count * item.price)});
+    return total.toFixed(2);
+  }
+
+  const orderFood = () => {
+    let retStr = "";
+    items.forEach((item) => {
+      if (item.count !== 0) {
+        retStr = retStr.concat(item.count, " ", item.title, "\n")
+      }
+    })
+    if (retStr.length === 0) {
+      // console.log("No items in cart");
+      return "No items in cart";
+    } else {
+      // console.log("Order Placed!\n".concat(retStr).slice(0,-2));
+      return "----------------\nOrder Placed!\n----------------\n".concat(retStr).slice(0,-2);
+    }
+  }
+
   return (
     <div className="container-fluid">
       <div className="header"> 
         <MenuHeader title={header.title} logo={header.logo} slogan={header.slogan} desc={header.description}/>
       </div>
       <div className="menu">
-        {menuItems.map((item) => (
-          <MenuItem id={item.id} title={item.title} imgPath={item.imageName} desc={item.description} price={item.price} /> 
-        ))}
+        {items.map((item) => (
+          <MenuItem
+            key={item.id}
+            id={item.id} 
+            title={item.title} 
+            imgPath={item.imageName}
+            desc={item.description}
+            price={item.price}
+            count={item.count}
+            setCounts={setItemCounts}
+          />
+          ))}
+      </div>
+      <div className="cart">
+          <MenuCart subTotal={getTotal()} clear={clearTotal} order={orderFood}/>
       </div>
     </div>
   );
