@@ -84,11 +84,14 @@
     border-style: solid;
     padding: 0% 5% 0% 5%;
   }
-
+  
   #close-button {
     line-height:normal;
-    width:auto;
-
+    width:20%;
+  }
+  #close-button:hover {
+    background-color: lightblue;
+    transition:0.3s;
   }
   
   .button-containers {
@@ -101,8 +104,19 @@
     width:60%;
   }
 
+  #clear:hover {
+    width:70%;
+    background-color: lightblue;
+    transition:0.3s;
+  }
   #order {
-    margin-right:10%;
+    margin-right: 10%;
+    width: 50%;
+  }
+  #order:hover {
+    width:70%;
+    background-color: lightblue;
+    transition:0.3s;
   }
 
   #modal {
